@@ -2,7 +2,6 @@ import sys
 import pystray
 from PIL import Image
 import timer
-import os
 import threading
 import timer_gui
 
@@ -31,11 +30,6 @@ def stop_timer(icon, item):
     update_icon(icon, 'clock.png')
     timer.save_data()
 
-def clean_time_history(icon, item):
-    if os.path.exists(timer.json_path):
-        timer.window_data = {}
-        timer.save_data()
-
 def show_data():
     timer_gui.run_app()
 
@@ -45,7 +39,6 @@ def create_tray_icon():
         pystray.MenuItem('Start timer', start_timer),
         pystray.MenuItem('Stop timer', stop_timer),
         pystray.MenuItem('Show data', show_data),
-        pystray.MenuItem('Clean time history', clean_time_history),
         pystray.MenuItem('Exit', quit_app),
     )
     icon = pystray.Icon('TimerTracker', image, menu=menu)
