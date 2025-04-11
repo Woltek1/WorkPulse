@@ -40,7 +40,7 @@ def timer_program():
 
             if process not in window_data:
                 window_data[process] = 0
-            window_data[process] += 1
+            window_data[process] += whole_seconds
 
             print(window_data)
             save_data()
